@@ -20,7 +20,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
-  res.send("API Running");
+  res.send("API Running!");
 });
 
 const PORT = process.env.PORT || 5000;
