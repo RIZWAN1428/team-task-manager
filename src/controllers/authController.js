@@ -51,7 +51,7 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await user.findOne({ email });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(400).json({
@@ -69,7 +69,6 @@ const loginUser = async (req, res) => {
 
     res.json({
       token: generateToken(user._id, user.role),
-
       user: {
         _id: user._id,
         name: user.name,
@@ -79,6 +78,7 @@ const loginUser = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+
     res.status(500).json({
       message: error.message,
     });
